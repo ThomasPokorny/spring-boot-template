@@ -1,5 +1,7 @@
 package com.tp.domain.book;
 
+import com.tp.domain.book.dto.BookCreateUpdateDto;
+import com.tp.domain.book.dto.BookDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
