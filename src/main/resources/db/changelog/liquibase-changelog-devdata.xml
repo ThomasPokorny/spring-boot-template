@@ -5,7 +5,7 @@
 
     <!-- Always run this changeset while using "on conflict do nothing" for the inserts, so we can easily add templates
          and notice immediately when the database schema becomes incompatible with the inserts -->
-    <changeSet author="Thomas Pokorny" id="devdata-templates" runAlways="true" contextFilter="dev">
+    <changeSet author="Thomas Pokorny" id="devdata-books" contextFilter="dev">
         <validCheckSum>ANY</validCheckSum>
         <sqlFile
                 endDelimiter="$$"
