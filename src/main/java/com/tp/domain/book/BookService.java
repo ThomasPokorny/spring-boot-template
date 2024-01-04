@@ -1,6 +1,7 @@
 package com.tp.domain.book;
 
 import com.tp.domain.book.dto.BookCreateUpdateDto;
+import com.tp.platform.webmvc.exception.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -45,8 +46,7 @@ public class BookService {
 
     private Book findBook(UUID id) {
         return repository.findById(id).orElseThrow(() -> {
-            // TODO: proper error handling
-            throw new RuntimeException("Book not found");
+            throw new NotFoundException("Book not found");
         });
     }
 }
