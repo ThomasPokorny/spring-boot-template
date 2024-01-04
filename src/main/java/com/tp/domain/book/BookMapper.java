@@ -5,6 +5,7 @@ import com.tp.domain.book.dto.BookDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
+import org.springframework.data.domain.Page;
 
 @Mapper(componentModel = "spring")
 public interface BookMapper {
@@ -15,4 +16,8 @@ public interface BookMapper {
     void updateEntity(@MappingTarget Book book, BookCreateUpdateDto dto);
 
     BookDto toDto(Book entity);
+
+    default Page<BookDto> toListDtos(Page<Book> books) {
+        return books.map(this::toDto);
+    }
 }
