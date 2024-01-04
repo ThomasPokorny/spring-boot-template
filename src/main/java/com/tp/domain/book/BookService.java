@@ -2,6 +2,7 @@ package com.tp.domain.book;
 
 import com.tp.domain.book.dto.BookCreateUpdateDto;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -10,6 +11,7 @@ import java.util.UUID;
 
 @RequiredArgsConstructor
 @Service
+@Slf4j
 public class BookService {
     private final BookRepository repository;
     private final BookMapper mapper;
@@ -20,6 +22,7 @@ public class BookService {
 
     public Book createBook(BookCreateUpdateDto bookCreateDto) {
         final var book = mapper.toEntity(bookCreateDto);
+        log.info("Book created");
         return repository.save(book);
     }
 
@@ -29,11 +32,13 @@ public class BookService {
 
     public Book updateBook(UUID id, BookCreateUpdateDto bookCreateDto) {
         final var book = findBook(id);
+        log.info("Book updated");
         mapper.updateEntity(book, bookCreateDto);
         return repository.save(book);
     }
 
     public void deleteBook(UUID id) {
+        log.info("Book deleted");
         final var book = findBook(id);
         repository.delete(book);
     }
