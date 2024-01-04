@@ -1,0 +1,19 @@
+version: "3.9"
+services:
+  postgres:
+    image: harbor.platomics.com/proxy/bitnami/postgresql:12
+    # NOTE: volumes section can be removed if not needed
+    volumes:
+      - spring-boot-template-db:/bitnami/postgresql
+      - ./init-test-db.sql:/docker-entrypoint-initdb.d/init-test-db.sql
+    ports:
+      - '15432:5432'
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=spring_boot_template_db
+    restart: unless-stopped
+
+# NOTE: volumes section can be removed if not needed
+volumes:
+  spring-boot-template-db:
