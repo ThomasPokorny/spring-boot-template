@@ -21,6 +21,11 @@
         <lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
         <postgresql.version>42.7.1</postgresql.version>
         <hypersistence-utils.version>3.7.0</hypersistence-utils.version>
+
+        <!-- Testing settings -->
+        <skipTests>false</skipTests>
+        <skipUTs>${skipTests}</skipUTs>
+        <skipITs>${skipTests}</skipITs>
     </properties>
 
     <dependencies>
@@ -162,6 +167,23 @@
                                 </resource>
                             </resources>
                         </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <configuration>
+                    <includes>
+                        <include>**/*IT.java</include>
+                    </includes>
+                    <skipTests>${skipITs}</skipTests>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>
