@@ -1,16 +1,25 @@
 package com.tp.domain.book;
 
 import jakarta.persistence.GeneratedValue;
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
  
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.util.UUID;
  
-@Data
 @Entity
 @Table(name = "BOOK")
+@Getter
+@Setter
+@Builder(toBuilder = true)
+@NoArgsConstructor
+@AllArgsConstructor
 public class Book {
  
 	@Id
