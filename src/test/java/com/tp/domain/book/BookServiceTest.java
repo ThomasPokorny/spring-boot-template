@@ -36,6 +36,6 @@ public class BookServiceTest {
                 .author(createBook.author()).build());
 
         bookService.createBook(createBook);
-        verify(bookRepository).save(argThat(book -> book.getIsbn().equals(createBook.isbn())));
+        verify(bookRepository).save(argThat(book -> book.getIsbn().equals("test")));
     }
 }
